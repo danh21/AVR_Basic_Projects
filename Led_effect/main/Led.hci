@@ -1,0 +1,7 @@
+VERSION:3 SOURCE_TIMESTAMP:5702A36E
+NODE:I LEVEL:0 LINE:1 "D:\cvavr\inc\io.h"
+NODE:I LEVEL:0 LINE:2 "D:\cvavr\inc\delay.h"
+NODE:M LEVEL:0 LINE:6 "uchar"
+NODE:M LEVEL:0 LINE:7 "uint"
+NODE:F LEVEL:0 LINE:40 "blink(unsigned char * port,unsigned char * DDR,unsigned char mode,unsigned char times,unsigned int ms)"
+NODE:F LEVEL:0 LINE:57 "run(unsigned char * port,unsigned char * DDR,unsigned char direction,unsigned int times,unsigned int ms)"

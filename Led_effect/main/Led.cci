@@ -1,0 +1,4 @@
+VERSION:3 SOURCE_TIMESTAMP:5702A374
+NODE:I LEVEL:0 LINE:8 "D:\cvavr\inc\io.h"
+NODE:I LEVEL:0 LINE:9 "D:\cd\AVR\Project\Led_effect\main\Led.h"
+NODE:F LEVEL:0 LINE:13 "main(void)"

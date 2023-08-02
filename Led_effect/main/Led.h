@@ -1,0 +1,75 @@
+#include <io.h>
+#include <delay.h>
+
+
+
+#define uchar unsigned char
+#define uint unsigned int
+
+
+
+/* ------------------------------ PROTOTYPE - START ------------------------------ */
+/**
+ * @brief leds blink
+ * 
+ * @param port  port of led
+ * @param DDR   Data Direction Register
+ * @param mode  effect of led 
+ * @param times number of repeated times  
+ * @param ms    delay in ms
+ */
+void blink(uchar* port, uchar* DDR, uchar mode, uchar times, uint ms);
+
+
+
+/**
+ * @brief led runs
+ *  
+ * @param port      port of led
+ * @param DDR       Data Direction Register
+ * @param direction left to right (L) / right to left (R)
+ * @param times     number of repeated times
+ * @param ms        delay in ms
+ */
+void run(uchar* port, uchar* DDR, uchar direction, uint times, uint ms);
+/* ------------------------------ PROTOTYPE - END ------------------------------ */
+
+
+
+/* ------------------------------ FUNCTION - START ------------------------------ */
+void blink(uchar* port, uchar* DDR, uchar mode, uchar times, uint ms) 
+{
+    uint i;
+    for (i = 0; i < times; i++)
+    {
+        *DDR = mode;
+        
+        *port |= mode; 
+        delay_ms(ms);
+          
+        *port &= ~mode;
+        delay_ms(ms); 
+    }
+}
+
+
+
+void run(uchar* port, uchar* DDR, uchar direction, uint times, uint ms)
+{
+    int i, j;
+    *DDR = 0xFF;
+    
+    for (j = 0; j < times; j++)
+    {
+        for (i = 0; i < 8; i++) 
+        {
+            if (direction == 'L')
+                *port = (0x80 >> i);    
+            else if (direction == 'R')
+                *port = (1 << i);
+                     
+            delay_ms(ms);  
+        }
+    }        
+}
+/* ------------------------------ FUNCTION - END ------------------------------ */
