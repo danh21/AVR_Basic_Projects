@@ -1,0 +1,6 @@
+VERSION:3 SOURCE_TIMESTAMP:5729B006
+NODE:I LEVEL:0 LINE:23 "D:\cvavr\inc\mega128.h"
+NODE:I LEVEL:0 LINE:24 "D:\cvavr\inc\1wire.h"
+NODE:I LEVEL:0 LINE:25 "D:\cvavr\inc\ds18b20.h"
+NODE:I LEVEL:0 LINE:26 "D:\cd\AVR\Project\LCD_DS18B20\main\LCD_20x4_4b.h"
+NODE:F LEVEL:0 LINE:30 "main(void)"

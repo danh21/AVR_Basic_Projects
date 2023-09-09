@@ -13,3 +13,5 @@
     - LCD: uses LCD to display information.
         + Version 1: uses 8-bit mode
         + Version 2: uses 4-bit mode
+
+    - readTemp: uses DS18B20 sensor to read temperature, then displays that value on LCD.

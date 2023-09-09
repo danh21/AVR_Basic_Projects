@@ -1,0 +1,108 @@
+#include <io.h>
+#include <delay.h>
+#include <stdio.h>
+
+
+
+/* ------------------------- CONFIG ------------------------- */
+#define LCD_Content PORTD
+#define LCD_RS      2
+#define LCD_EN      3
+#define LCD_D4      4
+#define LCD_D5      5
+#define LCD_D6      6
+#define LCD_D7      7
+
+void setup_port(void)
+{
+    DDRD = 0xFC; 
+}
+
+
+
+/* ------------------------- FUNCTION ------------------------- */
+#define RS_High (LCD_Content |=  (1 << LCD_RS))  
+#define RS_Low  (LCD_Content &= ~(1 << LCD_RS))  
+#define E_High  (LCD_Content |=  (1 << LCD_EN))
+#define E_Low   (LCD_Content &= ~(1 << LCD_EN))
+
+
+
+void LCD_send4Bit(unsigned char bits)                        
+{
+    LCD_Content &= ~((1 << LCD_D4) | (1 << LCD_D5) | (1 << LCD_D6) | (1 << LCD_D7)); 
+    
+    LCD_Content |= (bits & 1) << LCD_D4;
+    LCD_Content |= ((bits >> 1) & 1) << LCD_D5;
+    LCD_Content |= ((bits >> 2) & 1) << LCD_D6;
+    LCD_Content |= ((bits >> 3) & 1) << LCD_D7;
+}
+
+
+
+void LCD_enable()                                    
+{
+    E_High;                    // high to low transition
+    delay_ms(1);
+    E_Low;    
+    delay_ms(1);
+}
+
+
+
+void LCD_sendCmd(unsigned char cmd) 
+{
+    RS_Low;      
+    LCD_send4Bit(cmd >> 4); // higher 4-bit    
+    LCD_enable();
+    LCD_send4Bit(cmd);      // lower 4-bit
+    LCD_enable();
+}
+
+
+
+void LCD_init() 
+{    
+    LCD_sendCmd(0x02);      // return home
+    LCD_sendCmd(0x28);      // 4-bit mode, 2 lines, 5x8 pixel   
+    LCD_sendCmd(0x0C);      // turn on screen, turn off cursor 
+    LCD_sendCmd(0x06);      // increase cursor   
+    LCD_sendCmd(0x01);      // clear display         
+}
+
+
+
+void LCD_sendData(char data) 
+{
+    RS_High;
+    LCD_send4Bit(data >> 4); // higher 4-bit    
+    LCD_enable();
+    LCD_send4Bit(data);      // lower 4-bit
+    LCD_enable(); 
+}
+
+
+
+void LCD_printStr(char *str, int row, int column) 
+{
+    switch (row)
+    {
+        case 0: 
+            LCD_sendCmd((0x00 | 0x80) + column);   
+            break;
+        case 1: 
+            LCD_sendCmd((0x40 | 0x80) + column);    
+            break;
+        case 2: 
+            LCD_sendCmd((0x14 | 0x80) + column);    
+            break;  
+        case 3: 
+            LCD_sendCmd((0x54 | 0x80) + column);    
+            break;
+        default: 
+            break;
+    } 
+    
+    while (*str != '\0')                            
+        LCD_sendData(*str++);        
+}
