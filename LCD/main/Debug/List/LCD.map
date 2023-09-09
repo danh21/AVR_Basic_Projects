@@ -1,0 +1,26 @@
+RAM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+EEPROM Allocation [bytes]
+Variable                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                                          Register  Size
+------------------------------------------------------------------------------------------------
+
+FLASH Allocation [words]
+Function                                                                          Address   Size
+------------------------------------------------------------------------------------------------
+setup_port                                                                        0x000A1      8
+LCD_sendCmd                                                                       0x000A9      5
+LCD_init                                                                          0x000AE     13
+LCD_sendData                                                                      0x000BB     24
+LCD_printStr                                                                      0x000D3     46
+main                                                                              0x00101     72
+put_buff_G100                                                                     0x00149     64
+_print_G100                                                                       0x00189    308
+sprintf                                                                           0x002BD     52
+strlen                                                                            0x002F1     12
+strlenf                                                                           0x002FD     13
