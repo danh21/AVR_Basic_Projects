@@ -30,7 +30,8 @@ void setup_port(void)
 
 void LCD_send4Bit(unsigned char bits)                        
 {
-    LCD_Content &= 0x0F;
+    LCD_Content &= ~((1 << LCD_D4) | (1 << LCD_D5) | (1 << LCD_D6) | (1 << LCD_D7)); 
+    
     LCD_Content |= (bits & 1) << LCD_D4;
     LCD_Content |= ((bits >> 1) & 1) << LCD_D5;
     LCD_Content |= ((bits >> 2) & 1) << LCD_D6;

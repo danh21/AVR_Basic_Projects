@@ -5,8 +5,7 @@
 
 
 /* ------------------------- CONFIG ------------------------- */
-#define LCD_Content    PORTD
-//#define LCD_Content    PORTG
+#define LCD_Content PORTD
 #define LCD_RS      2
 #define LCD_EN      3
 #define LCD_D4      4
@@ -16,8 +15,7 @@
 
 void setup_port(void)
 {
-    //DDRG |= (1 << LCD_RS) | (1 << LCD_EN);  
-    DDRD = 0xFF; 
+    DDRD = 0xFC; 
 }
 
 
