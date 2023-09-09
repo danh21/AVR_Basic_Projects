@@ -12,3 +12,4 @@
 
     - LCD: uses LCD to display information.
         + Version 1: uses 8-bit mode
+        + Version 2: uses 4-bit mode

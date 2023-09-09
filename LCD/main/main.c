@@ -5,7 +5,7 @@
  * Author: DELL
  */
 
-#include "LCD_20x4_8b.h"
+#include "LCD_20x4_4b.h"
 
 
 

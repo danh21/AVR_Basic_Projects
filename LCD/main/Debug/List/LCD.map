@@ -13,14 +13,16 @@ Variable                                                                        
 FLASH Allocation [words]
 Function                                                                          Address   Size
 ------------------------------------------------------------------------------------------------
-setup_port                                                                        0x000A1      8
-LCD_sendCmd                                                                       0x000A9      5
-LCD_init                                                                          0x000AE     13
-LCD_sendData                                                                      0x000BB     24
-LCD_printStr                                                                      0x000D3     46
-main                                                                              0x00101     72
-put_buff_G100                                                                     0x00149     64
-_print_G100                                                                       0x00189    308
-sprintf                                                                           0x002BD     52
-strlen                                                                            0x002F1     12
-strlenf                                                                           0x002FD     13
+setup_port                                                                        0x000A1      3
+LCD_send4Bit                                                                      0x000A4     39
+LCD_enable                                                                        0x000CB     11
+LCD_sendCmd                                                                       0x000D6      3
+LCD_init                                                                          0x000D9     11
+LCD_sendData                                                                      0x000E4     13
+LCD_printStr                                                                      0x000F1     46
+main                                                                              0x0011F     72
+put_buff_G100                                                                     0x00167     64
+_print_G100                                                                       0x001A7    308
+sprintf                                                                           0x002DB     52
+strlen                                                                            0x0030F     12
+strlenf                                                                           0x0031B     13
