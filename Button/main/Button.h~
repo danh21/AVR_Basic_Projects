@@ -1,0 +1,39 @@
+#include <io.h>
+
+
+
+#define led         1
+#define onBtn       5
+#define offBtn      6
+#define toggleBtn   7
+
+
+
+int isPressed(unsigned char* input, int btn) 
+{
+    if ((*input & (1 << btn)) != 0)
+        return 1;
+    else
+        return 0;    
+}
+
+
+
+void ctrlLed(unsigned char* port, unsigned char* DDR, unsigned char* input) 
+{
+    *DDR = (1 << led);   
+    
+    if (isPressed(input, onBtn))               // on        
+        *port |= (1 << led);         
+           
+    if (isPressed(input, offBtn))              // off   
+        *port &= ~(1 << led);  
+        
+    if (isPressed(input, toggleBtn)) {         // toggle  
+        while (isPressed(input, toggleBtn)); 
+        if ((*port & (1 << led)) == 0)
+            *port |= (1 << led); 
+        else
+            *port &= ~(1 << led);
+    }         
+}
